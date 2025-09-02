@@ -2,6 +2,7 @@ import random
 from flask import Flask,render_template,request
 
 from flask_socketio import SocketIO,emit
+from plyer import notification
 
 app=Flask(__name__)
 socketio=SocketIO(app)
@@ -58,5 +59,13 @@ def handle_update_username(data):
     
 
 
+def on_new_message(sender, message):
+    # Show desktop notification
+    notification.notify(
+        title=f"New message from {sender}",
+        message=message,
+        timeout=5  # seconds
+    )
+ 
 if __name__=="__main__":
     socketio.run(app)
