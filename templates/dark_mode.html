@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Py Chat - Dark Mode Demo</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            color: #222;
+            transition: background 0.3s, color 0.3s;
+            font-family: Arial, sans-serif;
+        }
+        .dark-mode {
+            background-color: #222;
+            color: #f4f4f4;
+        }
+        .toggle-btn {
+            margin: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <h2>Welcome to Py Chat!</h2>
+    <p>This is a demo of dark mode toggle for accessibility.</p>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
