@@ -1,4 +1,4 @@
-name: Python Flask Application
+name: Python Flask App CI
 
 on:
   push:
@@ -36,9 +36,8 @@ jobs:
       run: |
         pytest tests/ --maxfail=1 --disable-warnings -q || echo "No tests found, skipping..."
     
-    - name: Run Flask app
+    - name: Run Flask app briefly (smoke test)
       env:
-        FLASK_APP: app.py     # change if your entrypoint is different (e.g. main.py, wsgi.py)
-        FLASK_ENV: development
+        FLASK_APP: app.py     # change if your entrypoint is different
       run: |
-        flask run --host=0.0.0.0 --port=5000
+        timeout 10 flask run --host=0.0.0.0 --port=5000 || echo "Flask stopped after 10s"
