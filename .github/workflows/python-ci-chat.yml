@@ -35,7 +35,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/pychat-flask-app:latest .
+      run: docker build -t jahed0307/pychat-flaskapp:latest .
 
     - name: Push Docker image
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/pychat-flask-app:latest
+      run: docker push jahed0307/pychat-flaskapp:latest
