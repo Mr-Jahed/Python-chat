@@ -28,14 +28,12 @@ jobs:
       run: |
         if [ -f tests/test_app.py ]; then pytest; else echo "No tests found, skipping"; fi
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v3
+    - name: Cnfigure AWS Credentials
+      uses: aws-action/configure-asw-credentials@v1
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
 
-    - name: Build Docker image
-      run: docker build -t jahed0307/pychat-flaskapp:latest .
-
-    - name: Push Docker image
-      run: docker push jahed0307/pychat-flaskapp:latest
+    - name: Deploy python chat site to S3 bucket:
+      run: aws s3 sync .s3://python-chatapp --delete
