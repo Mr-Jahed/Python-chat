@@ -36,5 +36,5 @@ jobs:
         aws-region: us-east-1
 
     - name: Deploy python chat site to S3 bucket
-      run: aws s3 sync . s3://python-chatapp --delete --acl public-read --exclude ".git/*" --exclude ".github/*"
+      run: aws s3 sync . s3://python-chatapp --delete --exclude ".git/*" --exclude ".github/*"
 
